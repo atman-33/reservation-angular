@@ -7,16 +7,16 @@ import { ProductComponent } from './product.component';
 
 const routes: Routes = [
   {
-    path: "products", component: ProductComponent,
+    path: 'products', component: ProductComponent,
     children: [
       // htmlにrouter-outletを実装する事で、URL「***/products」にProductListComponentを表示 
-      { path: "", component: ProductListComponent },
+      { path: '', component: ProductListComponent },
 
       // :XXX で、変数を格納
-      { path: ":productId", component: ProductDetailComponent }
+      { path: ':productId', component: ProductDetailComponent }
 
       // URL「products/detail」にProductDetailComponentを表示
-      //{ path: "detail", component: ProductDetailComponent }
+      //{ path: 'detail', component: ProductDetailComponent }
     ]
   }
 ];

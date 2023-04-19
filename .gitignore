@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Config Files（GitHubに公開したくない情報）
+/server/config/dev.js

@@ -9,6 +9,7 @@ import { products } from '../../products';
 })
 export class ProductDetailComponent {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public product: any;
 
   /**
@@ -19,7 +20,8 @@ export class ProductDetailComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.product = products[+params.get("productId")!];
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.product = products[+params.get('productId')!];
     })
   }
 }
