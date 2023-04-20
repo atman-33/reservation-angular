@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { products } from '../../products';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-listings',
@@ -8,13 +8,29 @@ import { products } from '../../products';
 })
 export class ProductListComponent {
 
-  public products = products;
+  public products: any;
 
   /**
+   * コンストラクタ
+   */
+  constructor(private _productService: ProductService) {
+  }
+
+  /** 
    * レンダリング前に実行
-   * @remark 重い処理はこちら（APIからデータ取得などの処理など）
+   * ※重い処理はこちら（APIからデータ取得などの処理など）
    */
   ngOnInit() {
-    this.products = products;
+
+    // 観測対象を取得
+    const productObservable = this._productService.getProducts();
+
+    // subscribeでDBからデータ取得
+    productObservable.subscribe(
+      (data) => {
+        this.products = data;
+      },
+      (err) => { console.error('次のエラーが発生しました: ' + err); }
+    );
   }
 }

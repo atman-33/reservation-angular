@@ -7,6 +7,9 @@ npm install
 ### サーバー起動（--open オプションでWebブラウザ起動）
 ng serve --open
 
+### サーバー起動（proxy.conf.json を利用してproxy経由でバックエンドにアクセス）
+npm run start-dev
+
 ## bootstrap適用
 ### 1. bootstrapインストール　※安定板のver4を指定
 npm install bootstrap@4 --save

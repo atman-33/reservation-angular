@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { products } from '../../products';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,13 +15,23 @@ export class ProductDetailComponent {
   /**
    * コンストラクタ
    */
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private _route: ActivatedRoute,
+    private _productService: ProductService) {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.product = products[+params.get('productId')!];
+    this._route.paramMap.subscribe(params => {
+      // this.product = this._productService.getProductById(params.get('productId')!);
+      const productObservable = this._productService.getProductById(params.get('productId')!);
+      productObservable.subscribe(
+        (data) => {
+          this.product = data;
+        },
+        (err) => {
+
+        }
+      )
     })
   }
 }
