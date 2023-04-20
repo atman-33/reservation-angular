@@ -3,7 +3,7 @@
     <div class="row">
         <!-- ループ文の何番目をindexで取得 -->
         <div class="col" *ngFor="let product of products; let productId = index">
-            <a [routerLink]="[productId]">
+            <a [routerLink]="[product._id]">
                 <div class="card">
 
                     <img src="{{ product.coverImage }}" class="card-img-top" alt="...">
