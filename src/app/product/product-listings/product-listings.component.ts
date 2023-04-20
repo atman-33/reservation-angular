@@ -11,12 +11,6 @@ export class ProductListComponent {
   public products = products;
 
   /**
-   * コンストラクタ
-   */
-  constructor() {
-  }
-
-  /**
    * レンダリング前に実行
    * @remark 重い処理はこちら（APIからデータ取得などの処理など）
    */
