@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
 
 /**
  * SPA用の画面遷移先（path）設定
  * @remark pathの先頭に/は不要（OK:detail NG:/detail）
  */
 const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
-  // { path: 'detail', component: ProductDetailComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full' }
 ];
 
 /**
@@ -17,7 +17,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    ProductModule
+    ProductModule,
+    AuthModule
   ],
   exports: [RouterModule]
 })

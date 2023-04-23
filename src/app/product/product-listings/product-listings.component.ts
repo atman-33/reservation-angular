@@ -26,11 +26,9 @@ export class ProductListComponent {
     const productObservable = this._productService.getProducts();
 
     // subscribeでDBからデータ取得
-    productObservable.subscribe(
-      (data) => {
-        this.products = data;
-      },
-      (err) => { console.error('次のエラーが発生しました: ' + err); }
-    );
+    productObservable.subscribe({
+      next: (data) => { this.products = data; },
+      error: (err) => { console.error('次のエラーが発生しました: ' + err); }
+    });
   }
 }

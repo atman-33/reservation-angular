@@ -24,14 +24,11 @@ export class ProductDetailComponent {
     this._route.paramMap.subscribe(params => {
       // this.product = this._productService.getProductById(params.get('productId')!);
       const productObservable = this._productService.getProductById(params.get('productId')!);
-      productObservable.subscribe(
-        (data) => {
-          this.product = data;
-        },
-        (err) => {
 
-        }
-      )
+      productObservable.subscribe({
+        next: (data) => { this.product = data; },
+        error: (err) => { }
+      });
     })
   }
 }

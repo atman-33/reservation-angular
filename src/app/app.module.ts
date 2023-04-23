@@ -13,7 +13,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
   // 利用するコンポーネントを登録
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
