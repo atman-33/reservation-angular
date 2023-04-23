@@ -36,6 +36,7 @@ router.post('/login', async (req, res) => {
         return res.json(token);
 
     } catch (err) {
+        console.log(err);
         return res.status(422).json({ error: [{ title: 'User error', detail: 'Something wet wrong!' }] });
     }
 });
