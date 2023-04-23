@@ -7,11 +7,11 @@ export class AuthService {
 
     constructor(private _http: HttpClient) { }
 
-    // getProducts(): Observable<any> {
-    //     return this._http.get('/api/v1/products');
-    // }
+    register(userData: any): Observable<any> {
+        return this._http.post('/api/v1/users/register', userData);
+    }
 
-    // getProductById(productId: string): Observable<any>  {
-    //     return this._http.get('/api/v1/products/' + productId);
-    //   }  
+    login(userData: any): Observable<any> {
+        return this._http.post('/api/v1/users/login', userData);
+    }
 }
