@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
     login(loginForm: any) {
         this._authService.login(loginForm.value).subscribe({
             next: (token) => { 
-                console.log(token);
+                // console.log(token);
                 this._router.navigate(['/products']);
             },
             error: (err: HttpErrorResponse) => {
