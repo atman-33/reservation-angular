@@ -3,5 +3,15 @@
         {
             "path": "./"
         }
-    ]
+    ],
+    "extensions": {
+        "recommendations": [
+            "eamodio.gitlens",
+            "ms-ceintl.vscode-language-pack-ja",
+            "pkief.material-icon-theme",
+            "ms-vscode-remote.remote-wsl",
+            "evondev.dracula-high-contrast",
+            "formulahendry.auto-rename-tag"
+        ]
+    }
 }
