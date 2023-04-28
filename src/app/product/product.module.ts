@@ -5,6 +5,7 @@ import { ProductListComponent } from './product-listings/product-listings.compon
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product.component';
 import { ProductService } from './shared/product.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,8 +14,8 @@ const routes: Routes = [
       // htmlにrouter-outletを実装する事で、URL「***/products」にProductListComponentを表示 
       { path: '', component: ProductListComponent },
 
-      // :XXX で、変数を格納
-      { path: ':productId', component: ProductDetailComponent }
+      // :*** で、変数を格納
+      { path: ':productId', component: ProductDetailComponent, canActivate: [AuthGuard]}
 
       // URL「products/detail」にProductDetailComponentを表示
       //{ path: 'detail', component: ProductDetailComponent }
