@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { JwtHelperService } from "@auth0/angular-jwt";
 import * as moment from 'moment'
+import { Router } from "@angular/router";
 
 const jwt = new JwtHelperService();
 
@@ -17,15 +18,24 @@ class DecodedToken {
 export class AuthService {
     private _decodedToken: any;
 
-    constructor(private _http: HttpClient) { 
+    constructor(
+        private _http: HttpClient,
+        private _router: Router) {
         this._decodedToken = JSON.parse(localStorage.getItem('app-meta') || JSON.stringify(new DecodedToken()));
     }
 
+    getToken() {
+        const token = localStorage.getItem('app-auth');
+
+        // tokenがダブルクォーテーションで囲まれているため削除
+        return token?.replace(/"/g, '');
+    }
+
     /**
-     * Tokenの有効期限が現在時刻（moment()）より前であればtrue
+     * 現在時刻（moment()）がTokenの有効期限より前であればtrue
      * @returns 
      */
-    isAutenticated(){
+    isAutenticated() {
         return moment().isBefore(moment.unix(this._decodedToken.exp));
     }
 
@@ -49,5 +59,6 @@ export class AuthService {
         localStorage.removeItem('app-auth');
         localStorage.removeItem('app-meta');
         this._decodedToken = new DecodedToken();
+        this._router.navigate(['/login']);
     }
 }
